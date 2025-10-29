@@ -1,0 +1,11 @@
+/* Rough Draft for main.cpp*/
+
+#include <iostream>
+#include <string>
+#include <WIP>
+
+using namespace std;
+
+int main(){
+  cout << "rough draft" << endl;
+  }
