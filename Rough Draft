@@ -1,11 +1,42 @@
 /* Rough Draft for main.cpp*/
 
+
 #include <iostream>
 #include <string>
-#include <WIP>
 
 using namespace std;
 
-int main(){
-  cout << "rough draft" << endl;
-  }
+int main()
+{
+    int choice;
+    do{
+        cout << "---------------------------------------------" << endl;
+        cout << "Enter 1 to add an order." << endl;
+        cout << "Enter 2 to delete an order." << endl;
+        cout << "Enter 3 to search for an order." << endl;
+        cout << "Enter 4 to complete an order." << endl;
+        cout << "Enter 5 to display non-complete orders." << endl;
+        cout << "Enter 6 to exit the program." << endl;
+        cout << "Enter 7 to do nothing!!!" << endl;
+        cout << "---------------------------------------------" << endl;
+        cin >> choice;
+        if (choice == 1){
+            
+        }else if (choice == 2){
+            
+        }else if (choice == 3){
+            
+        }else if (choice == 4){
+            
+        }else if (choice == 5){
+            
+        }else if (choice == 6){
+            break;
+        }else{
+            cout << "Sorry!! that's an invalid number!!" << endl;
+            break;
+        }
+    } while(choice != 6)
+    
+    return 0;
+}
