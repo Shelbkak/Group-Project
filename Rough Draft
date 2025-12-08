@@ -1,14 +1,28 @@
 /* Rough Draft for main.cpp*/
 
-
 #include <iostream>
+#include <random>
+#include "Pizza.h"
+#include <ctime>
 #include <string>
 
 using namespace std;
 
+void addPizza(PizzaOrders&, int, string, string);
+void deletePizza(PizzaOrders&, int);
+void searchPizza(PizzaOrders&, int);
+void completePizza(PizzaOrders&, int);
+void displayIncompletePizza(PizzaOrders&, bool);
+
 int main()
 {
+    PizzaOrders PzaOdrList;
     int choice;
+    int customer_ID;
+    string toppings;
+    string size;
+    bool isCompleted;
+    
     do{
         cout << "---------------------------------------------" << endl;
         cout << "Enter 1 to add an order." << endl;
@@ -17,26 +31,59 @@ int main()
         cout << "Enter 4 to complete an order." << endl;
         cout << "Enter 5 to display non-complete orders." << endl;
         cout << "Enter 6 to exit the program." << endl;
-        cout << "Enter 7 to do nothing!!!" << endl;
         cout << "---------------------------------------------" << endl;
         cin >> choice;
         if (choice == 1){
-            
+            addPizza(PzaOdrList, customer_ID, toppings, size);
         }else if (choice == 2){
-            
+            deletePizza(PzaOdrList, customer_ID);
         }else if (choice == 3){
-            
+            searchPizza(PzaOdrList, customer_ID);
         }else if (choice == 4){
-            
+            completePizza(PzaOdrList, customer_ID);
         }else if (choice == 5){
-            
+            displayIncompletePizza(PzaOdrList, isCompleted);
         }else if (choice == 6){
+            cout << "Bye bye!!" << endl;
             break;
         }else{
             cout << "Sorry!! that's an invalid number!!" << endl;
-            break;
         }
-    } while(choice != 6)
+    } while(choice != 6);
     
     return 0;
+}
+
+void addPizza(PizzaOrders& PzaOdrList, int customer_ID, string toppings, string size){
+    static int orderNum = 0;
+    cout << "Please put in the size of your pizza: ";
+    cin.ignore();
+    getline(cin, size);
+    cout << "Please put in the toppings on your pizza: ";
+    getline(cin, toppings);
+    customer_ID = orderNum + 1;
+    PzaOdrList.AddNew(customer_ID, toppings, size);
+    orderNum++;
+}
+
+void deletePizza(PizzaOrders& PzaOdrList, int customer_ID){
+    cout << "Please put in your Customer ID: ";
+    cin >> customer_ID;
+    PzaOdrList.removeOrder(customer_ID);
+}
+
+void searchPizza(PizzaOrders& PzaOdrList, int customer_ID){
+    cout << "Please put in your Customer ID: ";
+    cin >> customer_ID;
+    PzaOdrList.searchforpizza(customer_ID); //done
+}
+
+void completePizza(PizzaOrders& PzaOdrList, int customer_ID){
+    cout << "Please put in your Customer ID: ";
+    cin >> customer_ID;
+    PzaOdrList.completeOrder(customer_ID);
+}
+
+void displayIncompletePizza(PizzaOrders& PzaOdrList, bool isCompleted){     //done
+    PzaOdrList.displayIncomplete();
 }
